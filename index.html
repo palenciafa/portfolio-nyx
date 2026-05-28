@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Franchielle Nichole A. Palencia</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080b12;--bg2:#0e1220;--bg3:#141929;
+  --text:#e2e8f8;--muted:#6b7a9e;
+  --accent:#7c6af7;--accent2:#5dcaa5;--accent3:#f472b6;
+  --border:rgba(124,106,247,0.15);--font:'Segoe UI',system-ui,sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.7;overflow-x:hidden}
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all 0.4s}
+nav.scrolled{background:rgba(8,11,18,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:980px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{font-size:16px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+
+.wrapper{position:relative;z-index:1}
+section{max-width:980px;margin:0 auto;padding:5rem 2rem}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:6rem;padding-bottom:3rem;position:relative}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 0.2s forwards}
+.pulse-dot{width:8px;height:8px;background:var(--accent2);border-radius:50%;box-shadow:0 0 0 0 rgba(93,202,165,0.4);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(93,202,165,0.4)}70%{box-shadow:0 0 0 10px rgba(93,202,165,0)}100%{box-shadow:0 0 0 0 rgba(93,202,165,0)}}
+.eyebrow-text{font-size:12px;color:var(--accent2);letter-spacing:2px;text-transform:uppercase;font-weight:500}
+.hero-name{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-1px;opacity:0;transform:translateY(30px);animation:fadeUp 0.8s 0.4s forwards}
+.hero-name .line1{display:block;color:var(--text)}
+.hero-name .line2{display:block;background:linear-gradient(135deg,var(--accent) 0%,var(--accent3) 50%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite 1.2s}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-role{font-size:16px;color:var(--muted);margin-top:1rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 0.7s forwards}
+#typed-role{color:var(--accent);font-weight:500}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--accent);margin-left:2px;vertical-align:middle;animation:blink 0.8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:2rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 1s forwards}
+.btn-glow{background:linear-gradient(135deg,var(--accent),#5a4fd4);color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;cursor:pointer;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
+.btn-glow::before{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,0.15);transform:skewX(-20deg);transition:left 0.5s}
+.btn-glow:hover::before{left:130%}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,106,247,0.4)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.12);padding:12px 28px;border-radius:10px;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp 0.7s 1.2s forwards}
+.chip{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:5px 13px;font-size:12px;color:var(--muted);transition:all 0.2s;cursor:default}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(124,106,247,0.08)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fadeIn 1s 2s forwards}
+.scroll-hint span{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollDrop 1.5s ease infinite}
+@keyframes scrollDrop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* SECTION */
+.sec-wrap{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:500;white-space:nowrap}
+.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.5px;margin-bottom:0.5rem}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ABOUT */
+#about p{color:var(--muted);max-width:700px;line-height:2;font-size:15px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2rem}
+.stat-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center;transition:all 0.3s}
+.stat-card:hover{background:rgba(124,106,247,0.06);border-color:var(--accent);transform:translateY(-4px)}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-desc{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* CLICKABLE CARDS */
+.clickable{cursor:pointer}
+.clickable:active{transform:scale(0.97)!important}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.skill-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.35rem;transition:all 0.35s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.skill-card:hover{transform:translateY(-6px);border-color:rgba(124,106,247,0.4);background:rgba(124,106,247,0.06)}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-card-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.skill-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(124,106,247,0.12)}
+.skill-icon i{font-size:20px;color:var(--accent)}
+.skill-card-head span{font-size:13px;font-weight:600}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{font-size:11px;background:rgba(124,106,247,0.08);color:#a99ef7;border:1px solid rgba(124,106,247,0.15);border-radius:6px;padding:3px 9px}
+.click-hint{font-size:10px;color:var(--muted);margin-top:10px;opacity:0.6;display:flex;align-items:center;gap:4px}
+
+/* EXPERIENCE */
+.exp-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:1.75rem 2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.exp-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent),var(--accent2));border-radius:3px 0 0 3px}
+.exp-card:hover{border-color:rgba(124,106,247,0.35);transform:translateX(4px)}
+.exp-meta{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem}
+.exp-title{font-size:16px;font-weight:700}
+.exp-company{font-size:13px;color:var(--accent2);margin-top:4px;display:flex;align-items:center;gap:6px}
+.exp-date{font-size:12px;color:var(--muted);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:4px 12px;border-radius:99px;white-space:nowrap}
+.exp-list{list-style:none;margin-top:0.5rem;display:flex;flex-direction:column;gap:8px}
+.exp-list li{font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.exp-list li:last-child{border-bottom:none}
+.exp-list li::before{content:"";display:inline-block;width:4px;height:4px;min-width:4px;border-radius:50%;background:var(--accent);margin-top:8px}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.proj-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:10px;transition:all 0.35s;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(124,106,247,0.08),transparent 60%);opacity:0;transition:opacity 0.4s}
+.proj-card:hover{transform:translateY(-6px);border-color:rgba(124,106,247,0.4)}
+.proj-card:hover::before{opacity:1}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start}
+.proj-icon{width:40px;height:40px;border-radius:10px;background:rgba(124,106,247,0.12);display:flex;align-items:center;justify-content:center;transition:background 0.3s}
+.proj-card:hover .proj-icon{background:rgba(124,106,247,0.22)}
+.proj-icon i{font-size:20px;color:var(--accent)}
+.proj-year-badge{font-size:10px;background:rgba(93,202,165,0.1);color:var(--accent2);border:1px solid rgba(93,202,165,0.2);padding:3px 10px;border-radius:99px;font-weight:500}
+.proj-name{font-size:14px;font-weight:700}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* EDUCATION */
+.edu-list{display:flex;flex-direction:column;gap:14px}
+.edu-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.35rem 1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;transition:all 0.3s}
+.edu-card:hover{border-color:rgba(124,106,247,0.35);background:rgba(124,106,247,0.04)}
+.school{font-size:15px;font-weight:700}
+.degree{font-size:13px;color:var(--muted);margin-top:3px}
+.honor{font-size:12px;color:var(--accent2);margin-top:6px;display:flex;align-items:center;gap:5px}
+.edu-date{font-size:12px;color:var(--muted)}
+
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:1.25rem}
+.cert-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;gap:14px;align-items:flex-start;transition:all 0.3s}
+.cert-card:hover{border-color:rgba(93,202,165,0.3);transform:translateY(-3px)}
+.cert-icon{width:42px;height:42px;border-radius:10px;background:rgba(93,202,165,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cert-icon i{font-size:21px;color:var(--accent2)}
+.cert-name{font-size:13px;font-weight:600;line-height:1.4}
+.cert-note{font-size:11px;color:var(--muted);margin-top:4px}
+.badge-done{display:inline-block;background:rgba(93,202,165,0.1);color:var(--accent2);font-size:10px;padding:2px 9px;border-radius:99px;margin-top:6px;border:1px solid rgba(93,202,165,0.2)}
+.badge-wip{display:inline-block;background:rgba(239,159,39,0.1);color:#ef9f27;font-size:10px;padding:2px 9px;border-radius:99px;margin-top:6px;border:1px solid rgba(239,159,39,0.2)}
+
+/* LEADERSHIP */
+.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:1.25rem}
+.lead-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;gap:14px;transition:all 0.3s}
+.lead-card:hover{border-color:rgba(124,106,247,0.3);transform:translateY(-3px)}
+.lead-icon{width:42px;height:42px;border-radius:10px;background:rgba(124,106,247,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lead-icon i{font-size:21px;color:var(--accent)}
+.lead-name{font-size:13px;font-weight:600;line-height:1.4}
+.lead-note{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.contact-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:12px;transition:all 0.3s}
+.contact-card:hover{border-color:rgba(124,106,247,0.4);background:rgba(124,106,247,0.06);transform:translateY(-3px)}
+.contact-icon{width:40px;height:40px;border-radius:9px;background:rgba(124,106,247,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-icon i{font-size:20px;color:var(--accent)}
+.contact-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.contact-val{font-size:13px;font-weight:500;margin-top:2px}
+
+footer{text-align:center;padding:2rem;font-size:12px;color:var(--muted);border-top:1px solid var(--border);position:relative;z-index:1}
+
+/* ═══ MODAL ═══════════════════════════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity 0.35s,visibility 0.35s}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-backdrop{position:absolute;inset:0;background:rgba(4,6,12,0.82);backdrop-filter:blur(10px)}
+.modal-box{position:relative;z-index:1;background:var(--bg3);border:1px solid rgba(124,106,247,0.25);border-radius:20px;max-width:540px;width:100%;max-height:85vh;overflow-y:auto;padding:2rem;transform:scale(0.82) translateY(30px);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),opacity 0.35s;opacity:0}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0);opacity:1}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all 0.2s;line-height:1}
+.modal-close:hover{background:rgba(255,255,255,0.12);color:var(--text)}
+.modal-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:1.5rem}
+.modal-icon-wrap{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(124,106,247,0.15)}
+.modal-icon-wrap i{font-size:26px;color:var(--accent)}
+.modal-icon-wrap.green{background:rgba(93,202,165,0.12)}
+.modal-icon-wrap.green i{color:var(--accent2)}
+.modal-title{font-size:18px;font-weight:800;line-height:1.3}
+.modal-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.modal-badge{display:inline-block;font-size:10px;padding:3px 10px;border-radius:99px;margin-top:6px;font-weight:500}
+.modal-badge.green{background:rgba(93,202,165,0.1);color:var(--accent2);border:1px solid rgba(93,202,165,0.2)}
+.modal-badge.purple{background:rgba(124,106,247,0.1);color:var(--accent);border:1px solid rgba(124,106,247,0.2)}
+.modal-badge.orange{background:rgba(239,159,39,0.1);color:#ef9f27;border:1px solid rgba(239,159,39,0.2)}
+.modal-divider{height:1px;background:var(--border);margin:1.25rem 0}
+.modal-section-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:500;margin-bottom:0.75rem}
+.modal-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1rem}
+.modal-tag{font-size:12px;background:rgba(124,106,247,0.1);color:#a99ef7;border:1px solid rgba(124,106,247,0.18);border-radius:7px;padding:4px 11px}
+.modal-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+.modal-bullets li{font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.modal-bullets li::before{content:"";display:inline-block;width:5px;height:5px;min-width:5px;border-radius:50%;background:var(--accent);margin-top:7px}
+.modal-desc{font-size:13px;color:var(--muted);line-height:1.8}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <span class="nav-logo">FP</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrapper">
+
+<section id="hero">
+  <div class="hero-eyebrow"><div class="pulse-dot"></div><span class="eyebrow-text">Open to opportunities</span></div>
+  <h1 class="hero-name"><span class="line1">Franchielle Nichole</span><span class="line2">Palencia</span></h1>
+  <p class="hero-role">Cloud & Cybersecurity · <span id="typed-role"></span><span class="cursor"></span></p>
+  <div class="hero-chips">
+    <span class="chip">Microsoft Azure</span>
+    <span class="chip">Cybersecurity</span>
+    <span class="chip">System Administration</span>
+    <span class="chip">Networking</span>
+    <span class="chip">PowerShell</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-glow"><i class="ti ti-mail"></i> Get in touch</a>
+    <a href="#projects" class="btn-ghost"><i class="ti ti-briefcase"></i> View projects</a>
+  </div>
+  <div class="scroll-hint"><span>scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section id="about">
+  <div class="sec-wrap reveal"><span class="sec-label">About me</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">Who I am</h2>
+  <p class="reveal">I'm an entry-level Cloud Infrastructure and Cybersecurity-focused IT professional with hands-on experience in Microsoft Azure, IT support, and system administration. Gained through my internship at Insular Oil Corporation and lab-based projects. Skilled in troubleshooting, networking, monitoring, and cloud infrastructure fundamentals. Continuously learning Azure administration and cloud security, eager to grow in cloud engineering and cybersecurity roles.</p>
+  <div class="about-stats reveal reveal-delay-1">
+    <div class="stat-card"><div class="stat-num" data-count="4">0</div><div class="stat-desc">Months Internship</div></div>
+    <div class="stat-card"><div class="stat-num" data-count="6">0</div><div class="stat-desc">Projects Built</div></div>
+    <div class="stat-card"><div class="stat-num" data-count="4">0</div><div class="stat-desc">Certifications</div></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-wrap reveal"><span class="sec-label">Technical proficiencies</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">What I work with <span style="font-size:13px;color:var(--muted);font-weight:400">· click a card to explore</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card clickable reveal reveal-delay-1" data-modal="skill-cloud">
+      <div class="skill-card-head"><div class="skill-icon"><i class="ti ti-cloud"></i></div><span>Cloud & Infrastructure</span></div>
+      <div class="skill-tags"><span class="skill-tag">Microsoft Azure</span><span class="skill-tag">VMs</span><span class="skill-tag">VNets</span><span class="skill-tag">NSGs</span><span class="skill-tag">IAM</span><span class="skill-tag">Azure Monitor</span></div>
+      <p class="click-hint"><i class="ti ti-hand-click"></i> Click to expand</p>
+    </div>
+    <div class="skill-card clickable reveal reveal-delay-2" data-modal="skill-net">
+      <div class="skill-card-head"><div class="skill-icon"><i class="ti ti-network"></i></div><span>Networking</span></div>
+      <div class="skill-tags"><span class="skill-tag">TCP/IP</span><span class="skill-tag">DNS</span><span class="skill-tag">DHCP</span><span class="skill-tag">VPN</span><span class="skill-tag">Azure Networking</span></div>
+      <p class="click-hint"><i class="ti ti-hand-click"></i> Click to expand</p>
+    </div>
+    <div class="skill-card clickable reveal reveal-delay-3" data-modal="skill-sys">
+      <div class="skill-card-head"><div class="skill-icon"><i class="ti ti-server-2"></i></div><span>Systems Admin</span></div>
+      <div class="skill-tags"><span class="skill-tag">Windows Server 2022</span><span class="skill-tag">Active Directory</span><span class="skill-tag">AD DS</span><span class="skill-tag">Linux Ubuntu</span><span class="skill-tag">SSH</span></div>
+      <p class="click-hint"><i class="ti ti-hand-click"></i> Click to expand</p>
+    </div>
+    <div class="skill-card clickable reveal reveal-delay-1" data-modal="skill-sec">
+      <div class="skill-card-head"><div class="skill-icon"><i class="ti ti-shield-lock"></i></div><span>Security & Monitoring</span></div>
+      <div class="skill-tags"><span class="skill-tag">Azure Monitor</span><span class="skill-tag">Nagios</span><span class="skill-tag">Cloud Security</span><span class="skill-tag">IAM</span><span class="skill-tag">Firewall</span></div>
+      <p class="click-hint"><i class="ti ti-hand-click"></i> Click to expand</p>
+    </div>
+    <div class="skill-card clickable reveal reveal-delay-2" data-modal="skill-script">
+      <div class="skill-card-head"><div class="skill-icon"><i class="ti ti-terminal-2"></i></div><span>Scripting & Tools</span></div>
+      <div class="skill-tags"><span class="skill-tag">PowerShell</span><span class="skill-tag">Git & GitHub</span><span class="skill-tag">Basic SQL</span><span class="skill-tag">SAP ERP</span></div>
+      <p class="click-hint"><i class="ti ti-hand-click"></i> Click to expand</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-wrap reveal"><span class="sec-label">Employment</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">Work experience</h2>
+  <div class="exp-card reveal">
+    <div class="exp-meta">
+      <div><div class="exp-title">ICT Intern — Infrastructure, BI & ERP Team</div><div class="exp-company"><i class="ti ti-building" style="font-size:14px"></i> Insular Oil Corporation · Quezon City</div></div>
+      <span class="exp-date">Jan 2026 — Apr 2026</span>
+    </div>
+    <ul class="exp-list">
+      <li>Troubleshot network, hardware, and system-related issues in daily IT operations</li>
+      <li>Configured VPN connections and supported secure remote access</li>
+      <li>Performed root cause analysis (RCA) for technical issues</li>
+      <li>Built and configured a Windows Server environment with Active Directory Domain Services</li>
+      <li>Developed PowerShell scripts to automate inventory collection and administrative tasks</li>
+      <li>Assisted in backup, recovery, and patch management activities</li>
+      <li>Conducted laptop setup, deployment preparation, and software installation</li>
+      <li>Gained exposure to SAP ERP systems and Business Intelligence reporting</li>
+      <li>Monitored firewall and infrastructure-related configurations</li>
+      <li>Practiced Microsoft Azure through hands-on labs: VMs, VNets, NSGs, monitoring, IAM</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-wrap reveal"><span class="sec-label">Work & lab projects</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">Things I've built <span style="font-size:13px;color:var(--muted);font-weight:400">· click a card to explore</span></h2>
+  <div class="proj-grid">
+    <div class="proj-card clickable reveal reveal-delay-1" data-modal="proj-azure">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-cloud-computing"></i></div><span class="proj-year-badge">2026</span></div>
+      <div class="proj-name">Azure Cloud Infrastructure Lab</div>
+      <div class="proj-desc">Deployed and configured Azure VMs and virtual networks. Set up IAM policies, NSG rules for RDP/SSH, and monitored VM performance.</div>
+    </div>
+    <div class="proj-card clickable reveal reveal-delay-2" data-modal="proj-winserver">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-server"></i></div><span class="proj-year-badge">2026</span></div>
+      <div class="proj-name">Windows Server Administration Lab</div>
+      <div class="proj-desc">Built a Windows Server 2022 environment with Active Directory. Configured users, groups, permissions, and troubleshot DNS/IPv4.</div>
+    </div>
+    <div class="proj-card clickable reveal reveal-delay-3" data-modal="proj-cloud-ts">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-activity"></i></div><span class="proj-year-badge">2026</span></div>
+      <div class="proj-name">Cloud Troubleshooting Practice</div>
+      <div class="proj-desc">Explored Azure Monitor and Nagios. Monitored CPU, memory, uptime, and system alerts. Practiced incident resolution.</div>
+    </div>
+    <div class="proj-card clickable reveal reveal-delay-1" data-modal="proj-kayagov">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-building"></i></div><span class="proj-year-badge">2025</span></div>
+      <div class="proj-name">KayaGov – Gov't Response Management</div>
+      <div class="proj-desc">Web-based system for managing service requests and tracking government workflows.</div>
+    </div>
+    <div class="proj-card clickable reveal reveal-delay-2" data-modal="proj-mgpc">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-chart-bar"></i></div><span class="proj-year-badge">2025</span></div>
+      <div class="proj-name">MGPC Inventory Management & POS</div>
+      <div class="proj-desc">Inventory management and point-of-sale system for MGPC, enhancing tracking accuracy and transaction efficiency.</div>
+    </div>
+    <div class="proj-card clickable reveal reveal-delay-3" data-modal="proj-classizz">
+      <div class="proj-top"><div class="proj-icon"><i class="ti ti-school"></i></div><span class="proj-year-badge">2023</span></div>
+      <div class="proj-name">Classizz – Learning Management System</div>
+      <div class="proj-desc">LMS for academic use, ensuring efficient data management and user access control for students and instructors.</div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-wrap reveal"><span class="sec-label">Academic background</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">Education</h2>
+  <div class="edu-list reveal">
+    <div class="edu-card"><div><div class="school">National University Laguna</div><div class="degree">BS Computer Science · Calamba, Laguna</div><div class="honor"><i class="ti ti-award" style="font-size:14px"></i> Dean's Lister</div></div><div class="edu-date">Jun 2022 — Jul 2026</div></div>
+    <div class="edu-card"><div><div class="school">Our Lady of Fatima University Antipolo</div><div class="degree">Senior High School</div><div class="honor"><i class="ti ti-medal" style="font-size:14px"></i> Graduated with Honors</div></div><div class="edu-date">Aug 2020 — Jul 2022</div></div>
+  </div>
+  <div style="margin-top:2.5rem">
+    <div class="sec-wrap reveal" style="margin-bottom:1rem"><span class="sec-label" style="font-size:10px">Certifications · click to view details</span><div class="sec-line"></div></div>
+    <div class="cert-grid">
+      <div class="cert-card clickable reveal reveal-delay-1" data-modal="cert-google">
+        <div class="cert-icon"><i class="ti ti-shield-check"></i></div>
+        <div><div class="cert-name">Google Professional Cybersecurity Certificate</div><div class="cert-note">Risk management, threat analysis, network security</div><span class="badge-done">Completed 2025</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-1" data-modal="cert-tryhack">
+        <div class="cert-icon"><i class="ti ti-shield-check"></i></div>
+        <div><div class="cert-name">TryHackMe Pre Security Certificate</div><div class="cert-note">Intro to Security, Linux and Networking, Cybersecurity Basics</div><span class="badge-done">Completed 2025</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-1" data-modal="cert-cisco">
+        <div class="cert-icon"><i class="ti ti-shield-check"></i></div>
+        <div><div class="cert-name">Cisco Networking Academy Introduction to Cybersecurity</div><div class="cert-note">Network Security, Security Awareness, Digital Protection</div><span class="badge-done">Completed 2025</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-2" data-modal="cert-az900">
+        <div class="cert-icon"><i class="ti ti-cloud"></i></div>
+        <div><div class="cert-name">Microsoft Azure Fundamentals (AZ-900)</div><div class="cert-note">Cloud concepts and Azure services</div><span class="badge-wip">In Progress</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-3" data-modal="cert-az104">
+        <div class="cert-icon"><i class="ti ti-settings"></i></div>
+        <div><div class="cert-name">Azure Administrator Associate (AZ-104)</div><div class="cert-note">Azure infrastructure and administration</div><span class="badge-wip">In Progress</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-3" data-modal="cert-bs">
+        <div class="cert-icon"><i class="ti ti-user"></i></div>
+        <div><div class="cert-name">BlackStride Cyber Associate Ambassador</div><div class="cert-note">Cybersecurity Fundamentals, Cloud Security, Networking Fundamentals</div><span class="badge-done">Present 2026</span></div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="margin-top:2.5rem">
+    <div class="sec-wrap reveal" style="margin-bottom:1rem"><span class="sec-label" style="font-size:10px">Leadership & Organizations</span><div class="sec-line"></div></div>
+    <div class="cert-card clickable reveal reveal-delay-2" data-modal="org-msc">
+        <div class="cert-icon"><i class="ti ti-users"></i></div>
+        <div><div class="cert-name">Microsoft Student Community</div><div class="cert-note">Student development organization</div><span class="badge-done">2025</span></div>
+      </div>
+      <div class="cert-card clickable reveal reveal-delay-3" data-modal="org-bsc">
+        <div class="cert-icon"><i class="ti ti-user"></i></div>
+        <div><div class="cert-name">BlackStride Cyber Ambassador</div><div class="cert-note">Cybersecurity awareness and community engagement</div><span class="badge-done">2026</span></div>
+      </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-wrap reveal"><span class="sec-label">Get in touch</span><div class="sec-line"></div></div>
+  <h2 class="sec-title reveal">Contact</h2>
+  <div class="contact-grid reveal">
+    <div class="contact-card"><div class="contact-icon"><i class="ti ti-mail"></i></div><div><div class="contact-label">Email</div><div class="contact-val">palenciafranchielle24@gmail.com</div></div></div>
+    <div class="contact-card"><div class="contact-icon"><i class="ti ti-phone"></i></div><div><div class="contact-label">Phone</div><div class="contact-val">+63 976 465 6012</div></div></div>
+    <div class="contact-card"><div class="contact-icon"><i class="ti ti-map-pin"></i></div><div><div class="contact-label">Location</div><div class="contact-val">Makati City, Metro Manila, PH</div></div></div>
+  </div>
+</section>
+
+<footer>Designed & built with ♡ · Franchielle Nichole A. Palencia · 2026</footer>
+</div>
+
+<!-- ═══ MODAL OVERLAY ═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal-box" id="modal-box">
+    <button class="modal-close" id="modal-close">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- ═══ MODAL DATA ═══════════════════════════════════════════════════ -->
+<script>
+const MODALS = {
+  'skill-cloud':{
+    icon:'ti-cloud',color:'purple',title:'Cloud & Infrastructure',sub:'Microsoft Azure · Cloud Fundamentals',badge:'Core Competency',badgeType:'purple',
+    sections:[
+      {label:'Technologies',tags:['Microsoft Azure','Virtual Machines','VNets','NSGs','IAM','Azure Monitor','Cloud Infrastructure']},
+      {label:'What I can do',bullets:['Deploy and configure Azure Virtual Machines for various workloads','Design and manage Virtual Networks (VNets) with proper segmentation','Set up Network Security Groups (NSGs) for traffic filtering','Manage Identity & Access Management (IAM) policies and roles','Monitor cloud resource performance using Azure Monitor dashboards','Configure secure RDP/SSH access through NSG rules']}
+    ]
+  },
+  'skill-net':{
+    icon:'ti-network',color:'purple',title:'Networking',sub:'TCP/IP · DNS · DHCP · VPN',badge:'Core Competency',badgeType:'purple',
+    sections:[
+      {label:'Technologies',tags:['TCP/IP','DNS','DHCP','VPN','Azure Networking','Network Troubleshooting','Access Control']},
+      {label:'What I can do',bullets:['Troubleshoot DNS and IPv4 connectivity issues systematically','Configure DHCP for dynamic IP address management','Set up and maintain VPN connections for secure remote access','Apply network troubleshooting methodologies and root cause analysis','Configure Azure networking including VNets and peering']}
+    ]
+  },
+  'skill-sys':{
+    icon:'ti-server-2',color:'purple',title:'Systems Administration',sub:'Windows Server 2022 · Linux · Active Directory',badge:'Core Competency',badgeType:'purple',
+    sections:[
+      {label:'Technologies',tags:['Windows Server 2022','Active Directory','AD DS','Linux Ubuntu','SSH','User Management','Group Policy']},
+      {label:'What I can do',bullets:['Build and configure Windows Server 2022 environments from scratch','Set up Active Directory Domain Services (AD DS) and manage domains','Create and manage users, groups, and organizational units','Configure file permissions and access controls for system security','Perform SSH-based administration on Linux (Ubuntu) systems','Conduct backup, recovery, and patch management activities']}
+    ]
+  },
+  'skill-sec':{
+    icon:'ti-shield-lock',color:'purple',title:'Security & Monitoring',sub:'Azure Monitor · Nagios · Cloud Security',badge:'Core Competency',badgeType:'purple',
+    sections:[
+      {label:'Technologies',tags:['Azure Monitor','Nagios','Cloud Security Concepts','IAM','Firewall Monitoring','Incident Response','Alert Management']},
+      {label:'What I can do',bullets:['Monitor VM performance metrics (CPU, memory, uptime) with Azure Monitor','Set up alert rules and notification thresholds for proactive response','Use Nagios for basic infrastructure monitoring and health checks','Apply IAM principles to enforce least-privilege access controls','Assist in monitoring firewall and infrastructure configurations','Practice structured troubleshooting and incident resolution workflows']}
+    ]
+  },
+  'skill-script':{
+    icon:'ti-terminal-2',color:'purple',title:'Scripting & Tools',sub:'PowerShell · Git · SQL · SAP',badge:'Core Competency',badgeType:'purple',
+    sections:[
+      {label:'Technologies',tags:['PowerShell','Git & GitHub','Basic SQL','SAP ERP','Business Intelligence','Version Control']},
+      {label:'What I can do',bullets:['Assisted in PowerShell scripts to automate inventory collection','Use Git and GitHub for version control and collaborative development','Query databases with basic SQL for data retrieval','Work with SAP ERP systems and Business Intelligence reporting processes']}
+    ]
+  },
+  'proj-azure':{
+    icon:'ti-cloud-computing',color:'purple',title:'Azure Cloud Infrastructure Lab',sub:'Personal Lab Project · 2026',badge:'Cloud / Infrastructure',badgeType:'purple',
+    sections:[
+      {label:'Technologies Used',tags:['Microsoft Azure','Virtual Machines','VNets','NSGs','IAM','Azure Monitor','RDP/SSH']},
+      {label:'What I did',bullets:['Deployed and configured Azure Virtual Machines for different workloads','Designed Virtual Networks with appropriate subnet configurations','Configured NSG rules to allow/deny specific traffic (RDP, SSH)','Set up IAM policies and role assignments for secure access','Managed users, groups, and file permissions for system security','Monitored VM performance using Azure Monitor metrics and dashboards']}
+    ]
+  },
+  'proj-winserver':{
+    icon:'ti-server',color:'purple',title:'Windows Server Administration Lab',sub:'Personal Lab Project · 2026',badge:'Systems Administration',badgeType:'purple',
+    sections:[
+      {label:'Technologies Used',tags:['Windows Server 2022','Active Directory','AD DS','DNS','IPv4','Group Policy','User Management']},
+      {label:'What I did',bullets:['Built a complete Windows Server 2022 environment from scratch','Configured Active Directory Domain Services (AD DS) and joined clients','Created and managed user accounts, groups, and organizational units','Set up Group Policy Objects (GPOs) for system-wide configuration','Troubleshot DNS resolution issues and IPv4 connectivity problems','Configured network settings and verified domain communication']}
+    ]
+  },
+  'proj-cloud-ts':{
+    icon:'ti-activity',color:'purple',title:'Cloud Troubleshooting Practice',sub:'Personal Lab Project · 2026',badge:'Monitoring / DevOps',badgeType:'purple',
+    sections:[
+      {label:'Technologies Used',tags:['Azure Monitor','Nagios','CPU Monitoring','Memory Monitoring','Uptime Tracking','Alert Rules','Incident Resolution']},
+      {label:'What I did',bullets:['Explored monitoring workflows using Azure Monitor and Nagios','Monitored CPU usage, memory consumption, and system uptime metrics','Configured alert thresholds and notification rules for anomaly detection','Practiced structured troubleshooting workflows for incident resolution','Documented issues, root causes, and resolution steps systematically']}
+    ]
+  },
+  'proj-kayagov':{
+    icon:'ti-building',color:'green',title:'KayaGov – Government Response Management System',sub:'Collaborative Project · 2025',badge:'Web Application',badgeType:'green',
+    sections:[
+      {label:'Technologies Used',tags:['Web Development','Service Request Management','Workflow Tracking','Data Organization']},
+      {label:'What I did',bullets:['Collaborated in developing a web-based system for government service management','Implemented service request intake and workflow tracking features','Improved data organization and processing efficiency for government processes','Worked with a team to design user-friendly interfaces for staff and citizens']}
+    ]
+  },
+  'proj-mgpc':{
+    icon:'ti-chart-bar',color:'green',title:'MGPC Inventory Management & POS',sub:'Collaborative Project · 2025',badge:'Business Application',badgeType:'green',
+    sections:[
+      {label:'Technologies Used',tags:['Inventory Management','Point-of-Sale','Database','Sales Tracking','Stock Management']},
+      {label:'What I did',bullets:['Developed an inventory management system for accurate stock tracking','Built a point-of-sale (POS) interface for efficient sales transactions','Enhanced inventory tracking accuracy and reduced manual data entry','Collaborated with team members to deliver a working business solution']}
+    ]
+  },
+  'proj-classizz':{
+    icon:'ti-school',color:'green',title:'Classizz – Learning Management System',sub:'Collaborative Project · 2023',badge:'Education Platform',badgeType:'green',
+    sections:[
+      {label:'Technologies Used',tags:['LMS','User Access Management','Data Management','Academic Tools']},
+      {label:'What I did',bullets:['Collaborated in developing an LMS tailored for academic institution use','Ensured efficient data management for course content and student records','Implemented user access control for students, instructors, and admins','Contributed to a team-based software development workflow']}
+    ]
+  },
+  'cert-google':{
+    icon:'ti-shield-check',color:'green',title:'Google Professional Cybersecurity Certificate',sub:'Coursera · Completed 2025',badge:'Completed',badgeType:'green',
+    sections:[
+      {label:'Topics Covered',tags:['Risk Management','Threat Analysis','Network Security','Security Frameworks','Incident Response','SIEM Tools','Python for Cybersecurity','Linux CLI']},
+      {label:'Key Learnings',bullets:['Foundational cybersecurity concepts and industry frameworks (NIST, CIA Triad)','Identifying and analyzing security threats, vulnerabilities, and risks','Network security principles and tools for monitoring and protection','Hands-on experience with SIEM tools for log analysis and threat detection','Incident response procedures and security playbook workflows','Introduction to Python scripting for cybersecurity automation']}
+    ]
+  },
+  'cert-tryhack':{
+    icon:'ti-shield-check',color:'green',title:'TryHackMe Pre Security Certificate',sub:'TryHackMe · Completed 2025',badge:'Completed',badgeType:'green',
+    sections:[
+      {label:'Topics Covered',tags:['Networking Basics', 'Linux Fundamentals', 'Web Technologies', 'Security Concepts', 'Common Cyber Threats']},
+      {label:'Key Learnings',bullets:['Learned foundational cybersecurity concepts and terminology','Explored networking basics including IP addresses, DNS, and protocols','Built understanding of Linux systems and command line fundamentals','Studied how websites, web applications, and internet technologies work','Identified common cyber threats, vulnerabilities, and attack techniques','Completed hands-on exercises focused on practical cybersecurity skills']}
+    ]
+  },
+  'cert-cisco':{
+    icon:'ti-shield-check',color:'green',title:'Cisco Networking Academy Introduction to Cybersecurity',sub:'Cisco · Completed 2025',badge:'Completed',badgeType:'green',
+    sections:[
+      {label:'Topics Covered',tags:['Cyber Threats','Online Safety','Security Best Practices','Network Security','Endpoint Protection','Data Privacy']},
+      {label:'Key Learnings',bullets:['Introduced core cybersecurity concepts and industry practices','Learned about cyber attacks, malware, phishing, and social engineering','Explored methods for protecting data, devices, and online identities','Understood networking security principles and safe online communication','Learned the importance of cybersecurity in businesses and daily technology use','Gained awareness of cybersecurity career paths and responsibilities']}
+    ]
+  },
+  'cert-az900':{
+    icon:'ti-cloud',color:'purple',title:'Microsoft Azure Fundamentals (AZ-900)',sub:'Microsoft · Currently Learning',badge:'In Progress',badgeType:'orange',
+    sections:[
+      {label:'Topics Covered',tags:['Cloud Concepts','Azure Services','Pricing & SLAs','Governance','Security','Compliance','Azure Architecture']},
+      {label:'Key Learnings',bullets:['Core cloud concepts including IaaS, PaaS, SaaS and deployment models','Azure architectural components: regions, availability zones, resource groups','Core Azure services: compute, networking, storage, databases','Azure security, compliance, identity, and governance tools','Azure cost management, pricing calculator, and SLA understanding']}
+    ]
+  },
+  'cert-az104':{
+    icon:'ti-settings',color:'purple',title:'Azure Administrator Associate (AZ-104)',sub:'Microsoft · Currently Learning',badge:'In Progress',badgeType:'orange',
+    sections:[
+      {label:'Topics Covered',tags:['Azure Identities','Governance','Storage','Virtual Networks','VMs','Monitoring','Backup']},
+      {label:'Key Learnings',bullets:['Managing Azure identities, roles, and access with Azure AD','Implementing governance using policies, locks, and resource groups','Configuring and managing Azure storage accounts and replication','Deploying and managing virtual machines and scale sets','Setting up and securing virtual networks, DNS, and VPN gateways','Monitoring Azure resources with Azure Monitor and Log Analytics']}
+    ]
+  },
+  'cert-bs':{
+    icon:'ti-user',color:'purple',title:'Associate Ambassador',sub:'BlackStride Cyber · 2026',badge:'Present',badgeType:'green',
+    sections:[
+      {label:'Topics Covered',tags:['Cybersecurity Fundamentals','Cloud Security','Networking Fundamentals', 'Linux Fundamentals', 'Security Awareness','Community Engagement']},
+      {label:'Key Learnings',bullets:['Focused on cloud security concepts, best practices, and modern security approaches', 'Built foundational knowledge in cybersecurity, networking, and system security', 'Promoting cybersecurity awareness and education within the community','Engaging with peers and professionals to foster a stronger cybersecurity community presence', 'Participated in cybersecurity discussions, events, and community learning initiatives', 'Collaborating with BlackStride and community members to share knowledge and resources']}
+    ]
+  },
+  'org-msc':{
+    icon:'ti-cloud',color:'green',title:'Microsoft Student Community',sub:'Member · Since 2025',badge:'Student Organization',badgeType:'green',
+    sections:[
+      {label:'Focus Areas',tags:['Student Development','Workshops','Community Engagement']},
+      {label:'My Involvement',bullets:['Volunteer member of the Microsoft Student Community, engaging in student events and workshops','Participated to community discussions/webinars and knowledge sharing around Microsoft technologies']}
+    ]
+  },
+  'org-bsc':{
+    icon:'ti-settings',color:'green',title:'BlackStride Cyber Ambassador',sub:'Ambassador · Since 2026',badge:'Cybersecurity Community',badgeType:'green',
+    sections:[
+      {label:'Focus Areas',tags:['Cybersecurity Awareness','Community Engagement','Security Best Practices']},
+      {label:'My Involvement',bullets:['Serving as a BlackStride Cyber Ambassador, promoting cybersecurity awareness and education','Engaging with the cybersecurity community through events and discussions','Participating in outreach efforts to educate others on security best practices and emerging threats','Collaborating with peers and professionals to foster a stronger cybersecurity community presence']}
+    ]
+  }
+};
+
+// ─── MODAL ENGINE ───────────────────────────────────────────────────
+const overlay = document.getElementById('modal');
+const contentEl = document.getElementById('modal-content');
+
+function buildModal(key){
+  const d = MODALS[key]; if(!d) return;
+  let html = `
+    <div class="modal-header">
+      <div class="modal-icon-wrap ${d.color==='green'?'green':''}"><i class="ti ${d.icon}"></i></div>
+      <div>
+        <div class="modal-title">${d.title}</div>
+        <div class="modal-sub">${d.sub}</div>
+        <span class="modal-badge ${d.badgeType}">${d.badge}</span>
+      </div>
+    </div>`;
+  d.sections.forEach(sec => {
+    html += `<div class="modal-divider"></div><div class="modal-section-label">${sec.label}</div>`;
+    if(sec.tags) html += `<div class="modal-tags">${sec.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div>`;
+    if(sec.bullets) html += `<ul class="modal-bullets">${sec.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+  });
+  contentEl.innerHTML = html;
+}
+
+function openModal(key){
+  buildModal(key);
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-modal]').forEach(el => {
+  el.addEventListener('click', () => openModal(el.dataset.modal));
+});
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal() });
+
+// ─── PARTICLE CANVAS ────────────────────────────────────────────────
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], mouse = {x:-999,y:-999};
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight }
+resize(); window.addEventListener('resize', resize);
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY });
+
+class Particle{
+  constructor(){ this.reset(); this.y = Math.random()*H; this.opacity = Math.random()*0.5+0.1 }
+  reset(){
+    this.x = Math.random()*W; this.y = -10;
+    this.size = Math.random()*1.5+0.3;
+    this.vx = (Math.random()-0.5)*0.3; this.vy = Math.random()*0.4+0.1;
+    this.opacity = Math.random()*0.5+0.1;
+    const h=[260,180,330]; this.hue = h[Math.floor(Math.random()*h.length)];
+  }
+  update(){
+    const dx=this.x-mouse.x,dy=this.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<120){const f=(120-d)/120;this.vx+=dx/d*f*0.5;this.vy+=dy/d*f*0.5}
+    this.vx*=0.98;this.vy*=0.98;this.x+=this.vx;this.y+=this.vy;
+    if(this.y>H+10||this.x<-50||this.x>W+50) this.reset();
+  }
+  draw(){
+    ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle=`hsla(${this.hue},80%,70%,${this.opacity})`;ctx.fill();
+  }
+}
+for(let i=0;i<120;i++) particles.push(new Particle());
+function drawGrid(){
+  ctx.strokeStyle='rgba(124,106,247,0.03)';ctx.lineWidth=1;
+  const s=60;
+  for(let x=0;x<W;x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+  for(let y=0;y<H;y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+}
+function animate(){
+  ctx.clearRect(0,0,W,H);drawGrid();
+  for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){
+    const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<90){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(124,106,247,${0.12*(1-d/90)})`;ctx.lineWidth=0.5;ctx.stroke()}
+  }
+  particles.forEach(p=>{p.update();p.draw()});
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ─── NAVBAR ─────────────────────────────────────────────────────────
+window.addEventListener('scroll',()=>{ document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40) });
+
+// ─── TYPEWRITER ─────────────────────────────────────────────────────
+const roles=['Azure Cloud Learner','Cybersecurity Learner','System Administrator','Network Troubleshooter','IT Problem Solver'];
+let rIdx=0,cIdx=0,deleting=false;
+const typedEl=document.getElementById('typed-role');
+function type(){
+  const cur=roles[rIdx];
+  if(!deleting){typedEl.textContent=cur.slice(0,++cIdx);if(cIdx===cur.length){deleting=true;setTimeout(type,1800);return}}
+  else{typedEl.textContent=cur.slice(0,--cIdx);if(cIdx===0){deleting=false;rIdx=(rIdx+1)%roles.length}}
+  setTimeout(type,deleting?45:95);
+}
+setTimeout(type,1500);
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────
+const revObs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// ─── COUNT UP ────────────────────────────────────────────────────────
+const cntObs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(!x.isIntersecting)return;
+    const el=x.target,target=+el.dataset.count;
+    let cur=0;const inc=target/75;
+    const t=setInterval(()=>{cur=Math.min(cur+inc,target);el.textContent=Math.floor(cur);if(cur>=target)clearInterval(t)},16);
+    cntObs.unobserve(el);
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>cntObs.observe(el));
+
+// ─── TILT ────────────────────────────────────────────────────────────
+document.querySelectorAll('.proj-card,.skill-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`perspective(600px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform='' });
+});
+</script>
+</body>
+</html>
